@@ -1,41 +1,57 @@
 import { Component } from "react";
-import { Row, Form, Button, Container } from "react-bootstrap";
+import { Row, Form, Button, Container, Col } from "react-bootstrap";
+import CommentArea from "./CommentArea";
 import SingleBook from "./SingleBook";
 class Books extends Component {
   state = {
     searchQuery: "",
+    selectedBook: null,
   };
 
   render() {
     return (
-      <div>
-        <Container>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>
-                {/*               <Button>Search</Button>
-                 */}{" "}
-              </Form.Label>
-              <Form.Control
-                style={{ border: "2px solid #343a40" }}
-                type="text"
-                placeholder="Search for Books"
-                value={this.state.searchQuery}
-                onChange={(e) => this.setState({ searchQuery: e.target.value })}
-              ></Form.Control>
-            </Form.Group>
-          </Form>
-        </Container>
+      <Container fluid>
         <Row>
-          {this.props.books
-            .filter((book) =>
-              book.title.toLowerCase().includes(this.state.searchQuery)
-            )
-            .map((book, i) => (
-              <SingleBook singlebook={book} key={i} />
-            ))}
+          <Col md={10}>
+            <Form>
+              <Form.Group className="mb-3">
+                <Form.Control
+                  style={{ border: "2px solid #343a40" }}
+                  type="text"
+                  placeholder="Search for Books"
+                  value={this.state.searchQuery}
+                  onChange={(e) =>
+                    this.setState({ searchQuery: e.target.value })
+                  }
+                ></Form.Control>
+              </Form.Group>
+            </Form>
+
+            <Row>
+              {this.props.books
+                .filter((book) =>
+                  book.title.toLowerCase().includes(this.state.searchQuery)
+                )
+                .map((book, i) => (
+                  <SingleBook
+                    singlebook={book}
+                    key={i}
+                    selectedBook={this.state.selectedBook}
+                    changeSelectedBook={(asin) =>
+                      this.setState({
+                        selectedBook: asin,
+                      })
+                    }
+                  />
+                ))}
+            </Row>
+          </Col>
+          <Col md={2} className="d-flex justify-content-center">
+            <h3></h3>
+            <CommentArea asin={this.state.selectedBook} />
+          </Col>
         </Row>
-      </div>
+      </Container>
     );
   }
 }

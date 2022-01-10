@@ -10,12 +10,18 @@ class SingleBook extends Component {
       <>
         <Col md={3} className="mb-2">
           <Card
-            onClick={() =>
+            /*  onClick={() =>
               this.setState({
-                
                 selectedBook: !this.state.selectedBook,
-              })
-            }
+              }) } */
+
+            onClick={() => this.props.changeSelectedBook(this.props.book.asin)}
+            style={{
+              border:
+                this.props.selectedBook === this.props.book.asin
+                  ? "3px solid red"
+                  : "none",
+            }}
             style={{
               height: "68vh",
               border: `3px solid ${this.state.selectedBook ? "red" : "black"}`,
@@ -24,23 +30,23 @@ class SingleBook extends Component {
             <Card.Img
               variant="top"
               style={{ height: "40vh", objectFit: "cover" }}
-              src={this.props.singlebook.img}
+              src={this.props.book.img}
             />
             <Card.Body>
-              <Card.Title>{this.props.singlebook.title}</Card.Title>
+              <Card.Title>{this.props.book.title}</Card.Title>
               <Card.Text></Card.Text>
             </Card.Body>
             <Card.Footer>
-              <Button variant="warning">$ {this.props.singlebook.price}</Button>
+              <Button variant="warning">$ {this.props.book.price}</Button>
               <Badge pill variant="info" className="ml-5">
-                {this.props.singlebook.category}
+                {this.props.book.category}
               </Badge>
             </Card.Footer>
           </Card>
         </Col>
-        {this.state.selectedBook && (
+        {/*  {this.state.selectedBook && (
           <CommentArea asin={this.props.singlebook.asin} />
-        )}
+        )} */}
       </>
     );
   }
