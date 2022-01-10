@@ -6,12 +6,11 @@ class CommentArea extends Component {
   state = {
     comments: [],
   };
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate = (prevProps) => {
     if (prevProps.asin !== this.props.asin) {
       this.fetchComments();
     }
-  }
-
+  };
   fetchComments = async () => {
     try {
       let response = await fetch(
@@ -25,7 +24,6 @@ class CommentArea extends Component {
         }
       );
       if (response.ok) {
-        // console.log(response);
         let comments = await response.json();
         this.setState({ comments: comments });
       }
@@ -33,11 +31,14 @@ class CommentArea extends Component {
       alert("Fetch failed");
     }
   };
+  /*  componentDidMount = () => {
+    this.fetchComments();
+  }; */
 
   render() {
     return (
       <div>
-        <AddComment id={this.props.asin} />
+        <AddComment asin={this.props.asin} />
         <Comment comments={this.state.comments} />
       </div>
     );

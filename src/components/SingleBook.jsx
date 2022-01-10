@@ -2,9 +2,9 @@ import { Component } from "react";
 import { Card, Row, Col, Badge, Button, Modal } from "react-bootstrap";
 import CommentArea from "./CommentArea";
 class SingleBook extends Component {
-  state = {
+  /*  state = {
     selectedBook: false,
-  };
+  }; */
   render() {
     return (
       <>
@@ -15,16 +15,13 @@ class SingleBook extends Component {
                 selectedBook: !this.state.selectedBook,
               }) } */
 
-            onClick={() => this.props.changeSelectedBook(this.props.book.asin)}
+            onClick={() => this.props.changeSelecteBook(this.props.book.asin)}
             style={{
+              height: "68vh",
               border:
                 this.props.selectedBook === this.props.book.asin
                   ? "3px solid red"
                   : "none",
-            }}
-            style={{
-              height: "68vh",
-              border: `3px solid ${this.state.selectedBook ? "red" : "black"}`,
             }}
           >
             <Card.Img

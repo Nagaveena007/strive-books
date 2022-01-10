@@ -9,11 +9,11 @@ class AddComment extends Component {
     },
   };
   componentDidUpdate(prevProps) {
-    if (prevProps.id !== this.props.id) {
+    if (prevProps.asin !== this.props.asin) {
       this.setState({
         comment: {
           ...this.state.comment,
-          elementId: this.props.id,
+          elementId: this.props.asin,
         },
       });
     }

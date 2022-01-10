@@ -34,10 +34,10 @@ class Books extends Component {
                 )
                 .map((book, i) => (
                   <SingleBook
-                    singlebook={book}
+                    book={book}
                     key={i}
                     selectedBook={this.state.selectedBook}
-                    changeSelectedBook={(asin) =>
+                    changeSelecteBook={(asin) =>
                       this.setState({
                         selectedBook: asin,
                       })

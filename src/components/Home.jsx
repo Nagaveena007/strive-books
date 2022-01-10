@@ -13,10 +13,9 @@ const Home = () => {
 
   return (
     <>
-      <Container>
-        {/*         <Books books={scifi} />
-         */}{" "}
-      </Container>
+      {/*  <Container>
+        <Books books={scifi} />
+      </Container> */}
       <Tabs
         style={{ border: "1px solid black" }}
         id="controlled-tab-example"
