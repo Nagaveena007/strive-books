@@ -48,7 +48,7 @@ class Books extends Component {
           </Col>
           <Col md={2} className="d-flex justify-content-center">
             <h3></h3>
-            <CommentArea asin={this.state.selectedBook} />
+            <CommentArea id={this.state.selectedBook} />
           </Col>
         </Row>
       </Container>
